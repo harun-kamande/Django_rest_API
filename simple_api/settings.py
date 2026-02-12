@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1_0$bqpb38$pv&=0bwb+=s_yi0%@mvga-e&^)!6*4e586qm64)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["26c8-217-199-148-240.ngrok-free.app"]
 
 AUTH_USER_MODEL = 'customer.Customers'
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'customer',
     'api',
     'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
