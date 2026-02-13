@@ -13,7 +13,7 @@ from .serializers import CustomerSerializer
 # Create your views here.
 class CustomerView(APIView):
  
-    authentication_classes = [authentication.SessionAuthentication]
+    authentication_classes = [authentication.SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
