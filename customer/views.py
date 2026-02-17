@@ -7,14 +7,16 @@ from rest_framework import status,permissions,authentication
 
 from .models import Customers
 from .serializers import CustomerSerializer
-
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
 class CustomerView(APIView):
- 
-    # authentication_classes = [authentication.SessionAuthentication,authentication.TokenAuthentication]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+   
+
 
 
     def get(self, request):
@@ -25,13 +27,17 @@ class CustomerView(APIView):
         return Response({"message": "Customer View GET method", "data": serializer.data})
     
     def post(self, request):
-        
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "Customer View POST method", "data": serializer.data})
+            # Remove raw password from validated data
+            password = serializer.validated_data.pop('password', None)
+            customer = serializer.save()  # create user without password
+            if password:
+                customer.set_password(password)  # hash password
+                customer.save()
+            return Response({"message": "Customer View POST method", "data": serializer.data}, status=201)
         return Response(serializer.errors, status=400)
-    
+
     def put(self,request):
         customer_id = request.data.get('id')
         try:

@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'customer.Customers'
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
