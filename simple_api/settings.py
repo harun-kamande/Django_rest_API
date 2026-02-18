@@ -35,6 +35,7 @@ AUTH_USER_MODEL = 'customer.Customers'
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
     'product',
     'customer',
     'api',

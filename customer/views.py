@@ -10,6 +10,7 @@ from .serializers import CustomerSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import UserRateThrottle,AnonRateThrottle,ScopedRateThrottle,UserRateThrottle
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 # Create your views here.
