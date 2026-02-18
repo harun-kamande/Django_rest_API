@@ -17,7 +17,7 @@ class CustomerView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     throttle_classes = [UserRateThrottle, AnonRateThrottle, ScopedRateThrottle]
-    throttle_scope = 'customer'
+    # throttle_scope = 'customer'
    
 
 
