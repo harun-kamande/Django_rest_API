@@ -148,7 +148,7 @@ REST_FRAMEWORK = {
         'anon': '100/day',
         'user': '5/day',
     },
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     'PAGE_SIZE': 1,
 }
 
